@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Form</title>
+	<link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
+	<style>
+	
+	
+	.form-control{
+		display: inline-block;
+		box-shadow:3px 3px 3px 2px cornflowerblue;
+	}
+	body{
+	margin: 50px;
+	}
+	.n{
+		text-align: center;
+	}
+	td{
+	 padding: 10px;
+	 font-size: 21px;
+	 color:rgb(9, 9, 88);
+	 font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	}
+	label{
+		margin-left:50px;
+		font-size:25px;
+		color: brown;
+		font-family: Verdana, Geneva, Tahoma, sans-serif;
+	}
+	
+	th{
+		text-align: center;
+		font-size: 21px;
+		padding: 6px;
+		color:saddlebrown;
+
+	}
+	.btn{
+		margin-left: 50px;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+
+	p{
+		text-align: left;
+		margin-left: 370px;
+		color:red;
+		font-size: 18px;
+		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+		
+	}
+	h3{
+		font-size:25px;
+		color:green;
+		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	}
+	span{
+		color:black;
+		margin: 5px;
+		font-size:25px;
+		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	}
+	li{
+		text-align: left;
+		margin-left: 360px;
+		font-size:25px;
+		color:green;
+	}
+
+	</style>
+</head>
+<body>
+       <center>
+    <form action="/" method="POST">
+        <div class="form-group">
+	    <table width='800px'>
+	   <tr><td><label >Enter Number of processes:  </label></td><td>
+		<input type="text" class="form-control" name="num" placeholder="Num processes" required><br></td></tr>
+		<tr><td><label >Enter ID of processes:  </label></td><td>	
+		<input type="text" class="form-control" name="idp" placeholder="no1-no2....."required><br></td></tr>
+		<tr><td><label >Enter arrival time of processes:  </label></td><td>
+		<input type="text" class="form-control" name="arrival" placeholder="no1-no2-..."required><br></td></tr>
+		<tr><td><label >Enter quantum time of processes:  </label></td><td>
+		<input type="text" class="form-control" name="quantum" placeholder="number"><br></td></tr>
+		<tr><td><label >Enter brust time of processes:  </label></td><td>
+		<input type="text" class="form-control" name="brust" placeholder="no1-no2....." required><br></td></tr><br>
+		
+	    </table>
+		</div>
+		
+		<input type="submit" class="btn btn-success" value='SJF' name='btn'>
+		<input type="submit" class="btn btn-success" value='FCFS' name='btn'>
+		<input type="submit" class="btn btn-success" value='RR' name='btn'>
+		<input type="submit" class="btn btn-success" value='SRTF' name='btn'>
+		<input type="submit" class="btn btn-success" value='ALL' name='btn'>
+		<br><br><p>{{p}}</p>
+		
+	</form>
+</center>
+        
+	<center><table width='700px'>
+			{% for x in q %}
+				{% if x==0 %}
+				<th>Process Id </th><th>Arrival Time </th><th>Brust Time</th><th>Waiting Time</th><th>Turnaround Time</th>
+				{% endif %}
+				<tr>
+				{% for y in range(6) %}
+				  {% if y!=3%}
+				  <td class="n">{{mat[x][y]}}</td>
+				  {%endif%}
+				  {% endfor %}
+				 </tr>
+				{%if x==q1%}
+				<br>
+				<ul>
+				<li><h3>The Average of Waiting time is :<span>{{w}}</span></h3></li>
+				<li><h3>The Average of Turnaround time is :<span>{{t}}</span></h3></li>
+		    	</ul>
+				<br>
+				{%endif%}
+			{% endfor %}
+		
+	 </table>
+	<br>
+	{%if f==1%}
+	<main  class="container" style="margin-top: 3%;">   
+		<div>
+			<embed type="image/svg+xml" src="{{graph_data1}}" style="max-width:800px ;border: 1px dotted yellow;box-shadow:3px 3px 25px 2px darkblue; "/>
+		</div>
+	<br>
+	<main  class="container" style="margin-top: 3%;">   
+			<div>
+				<embed type="image/svg+xml" src="{{graph_data2}}" style="max-width:800px;border: 1px dotted yellow;box-shadow:3px 3px 25px 2px darkblue;"/>
+			</div>
+	</center>
+		<br>
+	{%endif%}
+
+
+</main> 
+</body>
+</html>
